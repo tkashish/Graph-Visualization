@@ -39,7 +39,7 @@ std::string ExePath() {
 NOTE : DO NOT CHANGE THIS FUNCTION
 This function exports the graph in a format which is readable by the visualiser.exe
 */
-void exportGraph(string path, graph g){
+void exportGraph(string path, graph g, bool exportProperties){
 	std::ofstream file(path, std::ios::out);
 	for (int i = 0; i < g.adj.size(); i++){
 		for (int j = 0; j < g.adj.size(); j++){
@@ -47,11 +47,13 @@ void exportGraph(string path, graph g){
 		}
 		file << endl;
 	}
-	file << "ACC" << "," << g.ACC << endl;
-	file << "GCC" << "," << g.GCC << endl;
-	file << "DIAM" << "," << g.DIAM << endl;
-	file << "APL" << "," << g.APL << endl;
-	file << "CPL" << "," << g.CPL << endl;
+	if (exportProperties){
+		file << "ACC" << "," << g.ACC << endl;
+		file << "GCC" << "," << g.GCC << endl;
+		file << "DIAM" << "," << g.DIAM << endl;
+		file << "APL" << "," << g.APL << endl;
+		file << "CPL" << "," << g.CPL << endl;
+	}
 	file.close();
 	return;
 }
@@ -134,12 +136,12 @@ This function will take graph as an input and
 3) display the graph using the visualiser.exe
 
 */
-void displayGraph(graph &g){
+void displayGraph(graph &g, bool exportProperties){
 
 	string excPath = ExePath();
 	string fileName = g.fileName;
 	string graphPath = excPath + "\\" + fileName + ".csv";
-	exportGraph(graphPath, g);
+	exportGraph(graphPath, g, exportProperties);
 	exportFilePath(excPath + "\\", fileName);
 	std::string path = excPath + "\\visualiser.exe";
 

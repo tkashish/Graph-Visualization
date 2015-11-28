@@ -1,2 +1,2 @@
 C:\Users\ktayal\Documents\Visual Studio 2013\Projects\Visualizer\Debug\
-graph1
+graph2
