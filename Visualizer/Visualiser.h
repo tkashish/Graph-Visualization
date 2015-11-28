@@ -106,18 +106,22 @@ graph readGraph(string path){
 	return g;
 }
 
-void printGraph(graph &g){
+void printGraph(graph &g, bool exportProperties){
+	cout << "- Adjacency Matrix -" << endl;
 	for (int i = 0; i < g.adj.size(); i++){
 		for (int j = 0; j < g.adj.size(); j++){
 			cout << g.adj[i][j] << " ";
 		}
 		cout << "" << endl;
 	}
-	cout << "ACC" << g.ACC << endl;
-	cout << "GCC" << g.GCC << endl;
-	cout << "DIAM" << g.DIAM << endl;
-	cout << "APL" << g.APL << endl;
-	cout << "CPL" << g.CPL << endl;
+	if (exportProperties){
+		cout << "- Properties -" << endl;
+		cout << "ACC  " << g.ACC << endl;
+		cout << "GCC  " << g.GCC << endl;
+		cout << "DIAM " << g.DIAM << endl;
+		cout << "APL  " << g.APL << endl;
+		cout << "CPL  " << g.CPL << endl;
+	}
 }
 /*
 NOTE : DO NOT CHANGE THIS FUNCTION
